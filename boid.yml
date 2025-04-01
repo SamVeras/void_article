@@ -1,0 +1,54 @@
+void:
+  type: web
+  title: Enter the Void
+  url:
+    value: https://voidlinux.org/
+    date: 2025-02
+
+void-docs:
+  type: web
+  title: Void Linux Handbook
+  language: en
+  url:
+    value: https://docs.voidlinux.org/
+    date: 2025-02
+
+void-distrowatch:
+  type: web
+  title: Distrowatch - Void
+  publisher: DistroWatch
+  language: en
+  url:
+    value: https://distrowatch.com/table.php?distribution=void
+    date: 2025-02
+
+prolinuxde:
+  type: blog
+  title: "Void Linux: Distribution mit XBPS-Paketverwaltung"
+  author: Hans-Joachim Baader
+  date: 2015-06-12
+  publisher: Pro-Linux
+  language: de
+  url:
+    value: https://www.pro-linux.de/news/1/22419/void-linux-distribution-mit-xbps-paketverwaltung.htm
+    date: 2025-02
+
+salute:
+  type: article
+  title: "Void Linux: A Salute to Old-School Linux"
+  author: Jack Wallen
+  date: 2017-10-27
+  language: en
+  url:
+    value: https://www.linux.com/topic/desktop/void-linux-salute-old-school-linux/
+    date: 2025-02
+
+distrowatch-weekly:
+  type: article
+  title: "Distrowatch Weekly"
+  author: Jesse Smith
+  date: 2017-05-29
+  language: en
+  url:
+    value: https://distrowatch.com/weekly.php?issue=20170529
+    date: 2025-02
