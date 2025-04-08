@@ -62,7 +62,7 @@ musl:
 
 gnu-libc:
   type: web
-  title: "GNU libc"
+  title: "The GNU C Library"
   url:
     value: https://www.gnu.org/software/libc/
     date: 2025-03
@@ -73,3 +73,17 @@ runit:
   url:
     value: https://smarden.org/runit/
     date: 2025-03
+
+void-packages:
+  type: web
+  title: "The Void source packages collection"
+  url:
+    value: https://github.com/void-linux/void-packages
+    date: 2025-04
+
+void-xbps:
+  type: web
+  title: "The X Binary Package System (XBPS)"
+  url:
+    value: https://github.com/void-linux/xbps
+    date: 2025-04
