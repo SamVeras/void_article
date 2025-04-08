@@ -52,3 +52,24 @@ distrowatch-weekly:
   url:
     value: https://distrowatch.com/weekly.php?issue=20170529
     date: 2025-02
+
+musl:
+  type: web
+  title: "musl libc"
+  url:
+    value: https://musl.libc.org/
+    date: 2025-03
+
+gnu-libc:
+  type: web
+  title: "GNU libc"
+  url:
+    value: https://www.gnu.org/software/libc/
+    date: 2025-03
+
+runit:
+  type: web
+  title: "runit - a UNIX init scheme with service supervision"
+  url:
+    value: https://smarden.org/runit/
+    date: 2025-03
