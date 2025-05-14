@@ -87,3 +87,59 @@ void-xbps:
   url:
     value: https://github.com/void-linux/xbps
     date: 2025-04
+
+wikipedia-void-pt:
+  type: web
+  title: "Void Linux"
+  url:
+    value: https://pt.wikipedia.org/wiki/Void_Linux
+    date: 2025-04
+
+wikipedia-runit:
+  type: web
+  title: "Runit"
+  url:
+    value: https://en.wikipedia.org/wiki/Runit
+    date: 2025-04
+
+musl-funcdiff:
+  type: web
+  title: "musl libc Functional differences from glibc"
+  url:
+    value: https://wiki.musl-libc.org/functional-differences-from-glibc.html
+    date: 2025-04
+
+void-openssl:
+  type: web
+  title: "OpenSSL in Void Linux"
+  url:
+    value: https://voidlinux.org/news/2021/02/OpenSSL.html
+    date: 2025-04
+
+void-issues:
+  type: web
+  title: "Serious issues with Void Linux"
+  url:
+    value: https://voidlinux.org/news/2018/05/serious-issues.html
+    date: 2025-04
+
+void-moving:
+  type: web
+  title: "GitHub Organisation is moving"
+  url:
+    value: https://voidlinux.org/news/2018/06/GitHub-Organisation-is-moving.html
+    date: 2025-04
+
+linux-magazine:
+  type: web
+  title: "Distro Walk - Void Linux >> Linux Magazine"
+  url:
+    value: https://www.linux-magazine.com/Issues/2021/249/Void-Linux
+    date: 2025-04
+
+chainguard-glibc-musl:
+  type: web
+  title: "glibc vs. musl - Chainguard Academy"
+  url:
+    value: https://edu.chainguard.dev/chainguard/chainguard-images/about/images-compiled-programs/glibc-vs-musl/
+    date: 2025-04
