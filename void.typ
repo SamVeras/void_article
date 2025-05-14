@@ -40,13 +40,51 @@ O Void Linux destaca-se por oferecer *suporte oficial a ambas as bibliotecas C*:
 
 == O sistema de pacotes XBPS
 
+O *XBPS* (_X Binary Package System_) é o *gerenciador de pacotes nativo do Void Linux*, criado inteiramente do zero pela equipe do Void. @void De licença BSD simplificada (2 cláusulas), o XBPS foi desenvolvido internamente e não é um fork de outro sistema existente. @void Ele é *extremamente rápido* e permite instalar, atualizar e remover software de forma ágil. Os pacotes binários do Void são pré-compilados e assinados; alternativamente, o usuário pode optar por compilar um pacote a partir do código-fonte, usando a #link("https://github.com/void-linux/void-packages")[coleção de pacotes-fonte XBPS]. Segundo o site oficial, “o sistema de pacotes do Void permite instalar, atualizar e remover software rapidamente; o software é fornecido em pacotes binários ou pode ser construído diretamente de fontes”. Durante a instalação ou remoção de pacotes, o XBPS realiza *checagens de integridade*, identificando bibliotecas compartilhadas incompatíveis e verificando dependências para evitar quebras acidentais no sistema.
+
+Os usuários interagem com o XBPS por meio de várias ferramentas de linha de comando. Entre os principais comandos estão:
+
+- `xbps-query`: pesquisa e exibe informações sobre pacotes instalados localmente ou disponíveis nos repositórios configurados.
+- `xbps-install`: instala ou atualiza pacotes binários e sincroniza os índices dos repositórios.
+- `xbps-remove`: remove pacotes instalados do sistema (incluindo pacotes órfãos e arquivos em cache).
+- `xbps-reconfigure`: reexecuta scripts de configuração de pacotes já instalados, útil para reconfigurar software após alterações em arquivos de configuração.
+- `xbps-alternatives`: gerencia o sistema de alternativas (semelhante ao update-alternatives do Debian), permitindo que múltiplos pacotes forneçam implementações diferentes de um mesmo recurso comum.
+- `xbps-pkgdb`: verifica e corrige problemas no banco de dados de pacotes local.
+- `xbps-rindex`: cria ou atualiza repositórios locais de pacotes binários a partir de diretórios já populados, útil para criar espelhos offline.
+
+Além desses comandos, o usuário pode personalizar repositórios oficiais editando arquivos `.conf` em `/etc/xbps.d/` ou `/usr/share/xbps.d/`. O XBPS lida nativamente com múltiplas arquiteturas (*x86_64*, *ARM*, etc.) e suporta tanto o glibc quanto o musl como bibliotecas C. O código-fonte do XBPS está disponível no repositório oficial do GitHub, onde pode-se acompanhar seu desenvolvimento e contribuições da comunidade.
+
 == Rolling release?
+
+O Void Linux adota o modelo _rolling release_#footnote("Termo em inglês que indica que o sistema recebe atualizações constantes sem lançamentos de versão numérica periódica.") (ou lançamento contínuo). Isso significa que não existem versões pontuais pré-definidas do sistema#footnote[Exemplo, Ubuntu 22.04 LTS (MELHORAR FOOTNOTE)]; em vez disso, o usuário mantém o Void sempre atualizado com as últimas versões dos pacotes disponibilizados nos repositórios. Segundo a documentação oficial, o Void é “uma distribuição independente, de lançamento contínuo (_rolling release_), desenvolvida do zero com foco na estabilidade em vez do bleeding edge”. Em outras palavras, apesar de receber atualizações frequentes, o Void prioriza a confiabilidade: as mudanças são testadas e distribuídas de forma a minimizar impactos, evitando pacotes de código-fonte instáveis.
+
+No site oficial do Void, essa filosofia aparece sob o lema “Stable _rolling release_”. Ou seja, o Void se concentra em ser estável em vez de sempre ter o software mais recente. A recomendação é “instale uma vez, atualize rotineiramente e com segurança” . Graças ao seu sistema de build contínuo, sempre que um desenvolvedor comita alterações no repositório “void-packages”, novas versões binárias dos pacotes são imediatamente construídas e enviadas para os espelhos oficiais. Isso permite que o usuário receba atualizações atuais e seguras quase em tempo real, sem precisar reinstalar o sistema, mantendo-o moderno sem comprometer a estabilidade.
+
+Em resumo, o modelo rolling release do Void garante um fluxo contínuo de atualizações de segurança e de recursos, diferentemente de distribuições baseadas em lançamentos pontuais. Para o usuário final, isso significa manter o sistema atualizado simplesmente executando xbps-install -Su periodicamente, sem necessidade de “migração de versão” no estilo de grandes lançamentos a cada ano.
 
 == xbps-src
 
+O xbps-src é o sistema de compilação (build system) de pacotes-fonte do Void Linux. Integrado ao repositório void-packages (#link("void-linux/void-packages", "https://github.com/void-linux/void-packages")), ele permite construir pacotes diretamente das fontes usando templates específicos. Inspirado em sistemas de ports de BSD, o xbps-src foi escrito do zero e é uma das principais forças do Void. De acordo com o Handbook, “você pode usar o xbps-src no repositório void-packages para construir pacotes (incluindo os restritos) a partir de templates”. Em outras palavras, o Void oferece um único repositório de templates (srcpkgs/) contendo os metadados necessários (origem, patches, dependências) para compilação de cada pacote; o xbps-src orquestra o processo de compilação com base nesses templates.
+
+Todo o processo de build do xbps-src é feito em contêineres isolados: ele utiliza chroots baseados nos namespaces do Linux para montar um ambiente limpo para cada compilação, garantindo que nenhum binário do sistema host seja usado inadvertidamente. Por exemplo, ele cria um rootfs temporário baseado no glibc (ou no musl, conforme desejado) e executa a compilação lá. Dessa forma, não é necessário privilégio de root para compilar pacotes; o usuário comum consegue gerar o pacote binário completo em segurança. Além disso, o xbps-src suporta compilação cruzada: é possível compilar pacotes para arquiteturas diferentes da atual. Ao final do processo, o resultado é um pacote .xbps que pode ser instalado normalmente pelo xbps-install ou disponibilizado em um repositório local.
+
+Para utilizar o xbps-src, normalmente seguem-se estes passos básicos:
+
+1. Instalar ferramentas de desenvolvimento: por exemplo, executar sudo xbps-install git base-devel xtools para obter compilers, headers e utilitários necessários.
+
+2. Clonar o repositório oficial de receitas: git clone https://github.com/void-linux/void-packages.git (ou navegar até ele, caso já esteja).
+
+3. Navegar até a pasta void-packages e preparar o ambiente de compilação: executar ./xbps-src binary-bootstrap (essa etapa inicializa os diretórios de rootfs para glibc e musl e baixa dependências básicas).
+
+4. Compilar o pacote desejado: ./xbps-src -N <nome-do-pacote> (-N para build nativo). O xbps-src baixa o código-fonte, aplica patches e gera o pacote binário. Opcionalmente pode-se usar ./xbps-src clean <nome-do-pacote> para remover compilados anteriores antes da build.
+
+// Em suma, o xbps-src oferece total controle sobre a construção de software no Void Linux. Ele permite que mantenedores e usuários avancem construindo seus próprios pacotes, facilitando contribuições ao projeto.
+
 == Gerenciamento de memória, processos e dispositivos
 
-#pagebreak()
+TO-DO.
+
+// #pagebreak()
 #bibliography("bib.yml", style: "the-institution-of-engineering-and-technology")
 // #bibliography("bib.yml", style: "associacao-brasileira-de-normas-tecnicas")
 
