@@ -13,6 +13,14 @@ void-docs:
     value: https://docs.voidlinux.org/
     date: 2025-02
 
+void-sponsors:
+  type: web
+  title: Acknowledgements
+  language: en
+  url:
+    value: https://voidlinux.org/acknowledgments/
+    date: 2025-04
+
 void-distrowatch:
   type: web
   title: Distrowatch - Void
@@ -81,11 +89,18 @@ void-packages:
     value: https://github.com/void-linux/void-packages
     date: 2025-04
 
-void-xbps:
+git-xbps:
   type: web
   title: "The X Binary Package System (XBPS)"
   url:
     value: https://github.com/void-linux/xbps
+    date: 2025-04
+
+void-xbps:
+  type: web
+  title: "XBPS Package Manager - Void Linux Handbook"
+  url:
+    value: https://docs.voidlinux.org/xbps/index.html
     date: 2025-04
 
 wikipedia-void-pt:
@@ -142,4 +157,18 @@ chainguard-glibc-musl:
   title: "glibc vs. musl - Chainguard Academy"
   url:
     value: https://edu.chainguard.dev/chainguard/chainguard-images/about/images-compiled-programs/glibc-vs-musl/
+    date: 2025-04
+
+bsd-ports-handbook:
+  type: web
+  title: "4.5. Using the Ports Collection"
+  url:
+    value: https://docs.freebsd.org/en/books/handbook/ports/#ports-using
+    date: 2025-04
+
+xbps-src-usage:
+  type: web
+  title: "xbps-src/USAGE at master - xdave/xbps-src"
+  url:
+    value: https://github.com/xdave/xbps-src/blob/master/USAGE
     date: 2025-04
