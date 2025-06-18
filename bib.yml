@@ -172,3 +172,31 @@ xbps-src-usage:
   url:
     value: https://github.com/xdave/xbps-src/blob/master/USAGE
     date: 2025-04
+
+digital-ocean-void:
+  type: web
+  title: "What is Void Linux? A Lightweight Linux Distro Explained | Digital Ocean"
+  url:
+    value: https://www.digitalocean.com/community/tutorials/void-linux
+    date: 2025-05
+
+void-docs-installation-guide:
+  type: web
+  title: "Installation Guide - Void Linux Handbook"
+  url:
+    value: https://docs.voidlinux.org/installation/live-images/guide.html
+    date: 2025-05
+
+void-docs-installation:
+  type: web
+  title: "Installation - Void Linux Handbook"
+  url:
+    value: "https://docs.voidlinux.org/installation/index.html"
+    date: 2025-05
+
+man-void-udev:
+  type: web
+  title: "udev(7) - Void Linux manpages"
+  url:
+    value: "https://man.voidlinux.org/udev"
+    date: 2025-05

@@ -136,9 +136,20 @@ Além disso, o xbps-src suporta compilação cruzada: é possível compilar paco
 
 == Gerenciamento de memória e dispositivos
 
-TO-DO.
+O Void Linux foi projetado para ter pegada ("_footprint_") reduzida. Em uso comum (ex.: ambiente #link("https://www.xfce.org/")[XFCE]) consome cerca de $150–200$ MB de RAM em repouso. @digital-ocean-void Mesmo instalações mínimas requerem quantidades modestas de RAM (a tabela oficial recomenda $~96$ MB para base em `x86_64/glibc` ou `x86_64/musl`). @void-docs-installation-guide
 
-// #pagebreak()
+Como préviamente mencionado, o sistema oferece duas variantes de _C library_: `glibc` (compatível, mas maior) e `musl` (mais enxuto). Imagens base com musl ocupam cerca de $600$ MB em disco, aproximadamente $100$ MB _a menos_ que a versão glibc ($700$ MB) – e produzem binários menores e mais simples. @void-docs-installation Esse design minimalista e o _init_ runit ajudam o Void a manter baixo consumo de memória geral.
+
+O gerenciamento de memória em si segue o modelo padrão do Linux: paginação e mapeamento de arquivos (`mmap`) funcionam normalmente. O Void não cria swap automaticamente; cabe ao usuário ativá-lo, se necessário ou desejado, usando `mkswap` e `swapon`, ou optar por soluções de compressão em RAM (ex.: `zram` via serviços específicos).
+
+Em muitos casos, com RAM suficiente não é preciso usar swap adicional. A liberação de memória inativa e as políticas de _swappiness_#footnote([Parâmetro do kernel Linux que controla o quão assertivo o mecanismo de swap é, com valor entre 0 e 200, onde valores menores indicam pouco _swapping_ e valores altos _swapping_ mais agressivo.]) permanecem ajustáveis via as interfaces usuais do kernel. Em suma, o Void conta com o _Virtual Memory_ do kernel para alocação de memória e cache, sem camadas extras proprietárias sobre ele.
+
+Seguindo a convenção Linux, o kernel monta `devtmpfs` em `/dev` e o sistema de eventos `udev` (pacote `eudev` no Void) popula dinamicamente os nós de dispositivo. O _daemon_#footnote([Um _daemon_ é um programa que roda como um processo de segundo plano, performando atividades sem interação do usuário.]) `udevd` recebe notificações diretas do kernel sempre que um hardware é conectado ou desconectado, carregando módulos apropriados e criando entradas como `/dev/sda` ou `/dev/ttyUSB0` com as permissões adequadas. @man-void-udev
+
+Não há uma _layer_ especial de abstração em Void: o reconhecimento de hardware é feito por módulos do kernel combinados com regras do udev. Caso queira, o usuário pode substituir o udev por alternativas (ex.: `mdev` ou `smdev`), mas o padrão da distribuição é o udev tradicional forkado (eudev).
+
+#pagebreak()
+
 #bibliography("bib.yml", style: "the-institution-of-engineering-and-technology")
 // #bibliography("bib.yml", style: "associacao-brasileira-de-normas-tecnicas")
 
