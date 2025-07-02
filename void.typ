@@ -1,4 +1,3 @@
-#set page(columns: 1)
 #set text(lang: "pt", region: "br")
 #show link: set text(fill: rgb(0, 0, 190, 255))
 #set quote(block: true)
@@ -6,14 +5,17 @@
   #image("void_logo.png", width: 30%)
 ]
 
-= Void Linux
+#align(center)[#text(20pt)[*Void Linux*]\ #text(14pt)[_*uma distribuição minimalista e independente*_]]
+
+#align(center)[Samuel Bernardo Veras \ #text(10pt)[_samuel.bernardo.veras\@gmail.com_] \ _Instituto Federal Catarinense -- Campus Blumenau, 2025_]
+
 == O sistema operacional Void
 
-O #link("https://voidlinux.org/")[*Void Linux*] é um sistema operacional, descrito como um sistema operacional de uso geral, baseado no _kernel_ monolítico #footnote[Tipo de _kernel_ (núcleo) onde todos os serviços principais do sistema rodam no mesmo espaço de memória (espaço de _kernel_).] do Linux. É uma distribuição #footnote[Muitas vezes chamadas de 'distros', as distribuições Linux são sistemas operacionais que inclui o _kernel_ Linux para fornecer suas funcionalidades principais de núcleo.]<k1> de Linux independente, desenvolvida completamente por voluntários, sem se basear nem derivar de outra distribuição existente. @void
+O #link("https://voidlinux.org/")[*Void Linux*] é um sistema operacional de propósito geral baseado no _kernel_ monolítico #footnote[Tipo de _kernel_ (núcleo) onde todos os serviços principais do sistema rodam no mesmo espaço de memória (espaço de _kernel_).] do Linux. É uma distribuição #footnote[Muitas vezes chamadas de 'distros', as distribuições Linux são sistemas operacionais que incluem o _kernel_ Linux para fornecer suas funcionalidades principais de núcleo.]<k1> Linux independente, desenvolvida completamente por voluntários, sem se basear nem derivar de outra distribuição existente. @void
 
-A distribuição #footnote(<k1>) Void possui diversas características e funcionalidades que a distinguem das demais distribuições Linux, como o uso do gerenciador de pacotes *XBPS* (_X Binary Package System_), que foi projetado e implementado do zero e conta com seus próprios repositórios, apoio e suporte para as implementações da biblioteca padrão do C #footnote[Frequentemente abreviado como libc, aqui se referem as implementações da biblioteca padrão da linguagem de programação C, seguindo a especificação do padrão ISO C, sobre a API de chamadas de sistema do Linux.] #link("https://musl.libc.org/")[*musl*] (ou *musl libc*) e #link("https://www.gnu.org/software/libc/")[*glibc*] (ou *GNU libc*), o uso do #link("https://smarden.org/runit/")[*runit*] #footnote[O runit é um sistema de inicialização e gerenciamento de serviços para sistemas Unix-like, que inicia, supervisiona e finaliza processos. @runit] no papel de sistema de inicialização e supervisor de serviços, um sistema de atualizações contínuas com foco em estabilidade ("*stable rolling-release*"") e compilação de pacotes através do construtor de pacotes XBPS, o *xbps-src*. #footnote[O xbps-src também foi escrito do zero, e é capaz de ser usado para compilar software em ambientes isolados sem exigir root, com suporte a _cross-compilation_ e múltiplas bibliotecas C.] @void @void-docs
+A distribuição #footnote(<k1>) Void possui diversas características e funcionalidades que a distinguem das demais distribuições Linux, como o uso do gerenciador de pacotes *XBPS* (_X Binary Package System_), projetado e implementado do zero. Ela mantém seus próprios repositórios e oferece suporte para as implementações da biblioteca padrão do C #footnote[Frequentemente abreviado como libc, aqui se referem as implementações da biblioteca padrão da linguagem de programação C, seguindo a especificação do padrão ISO C, sobre a API de chamadas de sistema do Linux.] #link("https://musl.libc.org/")[*musl*] (ou *musl libc*) e #link("https://www.gnu.org/software/libc/")[*glibc*] (ou *GNU libc*), o uso do #link("https://smarden.org/runit/")[*runit*] #footnote[O runit é um sistema de inicialização e gerenciamento de serviços para sistemas Unix-like que inicia, supervisiona e finaliza processos. @runit] no papel de sistema de inicialização e supervisor de serviços, um sistema de atualizações contínuas com foco em estabilidade ("*stable rolling release*") e compilação de pacotes através do construtor de pacotes XBPS, o *xbps-src*. #footnote[O xbps-src também foi escrito do zero e é capaz de ser usado para compilar software em ambientes isolados sem exigir root, com suporte a _cross-compilation_ e múltiplas bibliotecas C.] @void @void-docs
 
-Em Abril de 2025, o Void Linux mantém um #link("https://github.com/void-linux/void-packages")[repositório oficial no GitHub] com milhares de pacotes, incluindo pacotes _"nonfree"_ e _multilib_, com 2.695 mil estrelas e 1.343 colaboradores. O #link("https://github.com/void-linux/xbps")[repositório do XBPS] por sua vez conta com 875 estrelas e 59 colaboradores. A comunidade do Void Linux é ativa e está presente em vários lugares da internet, como o subreddit oficial r/voidlinux, que conta com 16.156 membros inscritos e o canal de IRC `#voidlinux` na rede #link("https://libera.chat/")[Libera.Chat]. @void @void-packages @git-xbps
+Em Abril de 2025, o Void Linux mantém um #link("https://github.com/void-linux/void-packages")[repositório oficial no GitHub] com milhares de pacotes, incluindo pacotes _"nonfree"_ e _multilib_, com 2.695 estrelas e 1.343 colaboradores. O #link("https://github.com/void-linux/xbps")[repositório do XBPS] por sua vez conta com 875 estrelas e 59 colaboradores. A comunidade do Void Linux é ativa e está presente em vários lugares da internet, como o subreddit oficial r/voidlinux, que conta com 16.156 membros inscritos e o canal de IRC `#voidlinux` na rede #link("https://libera.chat/")[Libera.Chat]. @void @void-packages @git-xbps
 
 
 == História e histórico de desenvolvimento
@@ -24,25 +26,33 @@ A distro oferece um sistema enxuto e modular, privilegiando ferramentas própria
 
 Ao longo dos anos, o desenvolvimento do Void Linux passou por marcos importantes. Em 2014, por exemplo, a equipe optou por abandonar o *systemd*#footnote[Systemd é um sistema de init usado em várias distribuições Linux, responsável por inicializar o sistema, gerenciar serviços em segundo plano e controlar o estado geral do sistema, com foco em paralelismo e dependências entre processos.] em favor do *runit* como sistema de inicialização principal @void-docs, reforçando o objetivo de manter o sistema leve e fácil de auditar.
 
-Naquela mesma época, o Void tornou-se a primeira distribuição Linux a usar o #link("https://www.libressl.org/")[*LibreSSL*] como biblioteca de criptografia padrão, substituindo o #link("https://www.openssl.org/")[*OpenSSL*]. @void-distrowatch No entanto, em 2021 a equipe anunciou oficialmente o retorno ao OpenSSL (efetivado em 5 de março de 2021) devido à complexidade de manter patches necessários para o LibreSSL. @void-openssl Esses ajustes refletiram a filosofia prática do projeto: adotar tecnologias enxutas, mas reverter mudanças que compliquem o suporte a softwares amplamente usados. A cada lançamento, o Void também incorpora melhorias de compatibilidade (como suporte completo a arquiteturas *ARM*#footnote[ARM é uma arquitetura de processador de 32 bits, comum em dispositivos móveis e embarcados.] e *ARM64*#footnote[ARM64 (ou AArch64) é a versão de 64 bits da arquitetura ARM, usada em dispositivos mais modernos, oferecendo melhor desempenho e suporte a mais memória.]) e mantém builds nativos através do sistema *xbps-src*, inspirado nas coleções de ports do BSD.
+Naquela mesma época, o Void tornou-se a primeira distribuição Linux a usar o #link("https://www.libressl.org/")[*LibreSSL*] como biblioteca de criptografia padrão, substituindo o #link("https://www.openssl.org/")[*OpenSSL*]. @void-distrowatch No entanto, em 2021 a equipe anunciou oficialmente o retorno ao OpenSSL (efetivado em 5 de março de 2021) devido à complexidade de manter patches necessários para o LibreSSL. @void-openssl
+
+Esses ajustes refletiram a filosofia prática do projeto: adotar tecnologias enxutas, mas reverter mudanças que compliquem o suporte a softwares amplamente usados. A cada lançamento, o Void também incorpora melhorias de compatibilidade (como suporte completo a arquiteturas *ARM*#footnote[ARM é uma arquitetura de processador de 32 bits, comum em dispositivos móveis e embarcados.] e *ARM64*#footnote[ARM64 (ou AArch64) é a versão de 64 bits da arquitetura ARM, usada em dispositivos mais modernos, oferecendo melhor desempenho e suporte a mais memória.]) e mantém builds nativos através do sistema *xbps-src*, inspirado nas coleções de ports do BSD.
 
 Atualmente, o Void Linux segue como um projeto de comunidade com desenvolvedores voluntários. O projeto sobrevive graças ao esforço conjunto de líderes de infraestrutura, manutenção de pacotes e documentação, todos atuando em tempo livre e decidindo coletivamente os rumos do desenvolvimento. @void-docs @linux-magazine
 
 Em 2018, o projeto enfrentou uma crise organizacional quando o mantenedor original desapareceu, forçando a equipe a *recriar a organização no GitHub* e realocar domínios para manter o controle do repositório. @void-moving @void-issues Esse episódio reforçou a estrutura colaborativa: decisões importantes agora são tomadas por consenso entre os principais contribuidores. Apesar dos desafios organizacionais, o Void Linux tem recebido elogios por sua agilidade e design minimalista -- por exemplo, chegou a aparecer entre as distribuições *mais bem cotadas no DistroWatch*, mantendo bom nível de estabilidade para uso diário. @void-distrowatch
 
-Mesmo sendo o fruto do trabalho de centenas de colaboradores voluntários, o próprio projeto Void dá crédito a um certo número de patrocinadores, tanto indivíduos como organizaçõesm, que tornam possível a compilação de pacotes e imagens de sistema, que providenciam hospedagem e disponibilização além de terem que monitorar e manter essa infraestrutura. @void-sponsors
+Mesmo sendo o fruto do trabalho de centenas de colaboradores voluntários, o próprio projeto Void dá crédito a um certo número de patrocinadores, tanto indivíduos como organizações, que tornam possível a compilação de pacotes e imagens de sistema, que providenciam hospedagem e disponibilização além de terem que monitorar e manter essa infraestrutura. @void-sponsors
 
 == Gerenciador de serviços e sistema de inicialização runit
 
-Diferentemente da maioria das distribuições Linux modernas, o Void Linux utiliza o runit como sistema de inicialização (_init_) e para a supervisão de serviços. @void-docs O runit é uma suíte de inicialização Unix minimalista, criada por *Gerrit Pape*, que organiza o boot em três estágios: _inicialização única do sistema_, _execução contínua de serviços_ e _desligamento_. Na prática, ao entrar no _Stage 2_ o runit executa o programa `runsvdir`, que escaneia diretórios de serviços e os inicia simultaneamente, resultando em um boot rápido e determinístico. Esse design segmentado contribui para a confiabilidade e agilidade do Void: o código executado como processo 1 (`PID 1`) é *muito pequeno*, o que facilita auditoria e reduz pontos únicos de falha. Os _“runlevels”_ são gerenciados pelas ferramentas internas do runit (`runsvdir` e `runsvchdir`), e o sistema resolve automaticamente dependências simples entre serviços durante a inicialização. @runit
+Diferentemente da maioria das distribuições Linux modernas, o Void Linux utiliza o runit como sistema de inicialização (_init_) e para a supervisão de serviços. @void-docs O runit é uma suíte de inicialização Unix minimalista, criada por *Gerrit Pape*, que organiza o boot em três estágios: _inicialização única do sistema_, _execução contínua de serviços_ e _desligamento_.
 
-Cada serviço no Void sob runit *é representado por um diretório dedicado* dentro de `/etc/sv/` (ou `/var/service/`). Esse diretório deve conter obrigatoriamente um script executável chamado `run`, que inicia o serviço em primeiro plano. Opcionalmente, podem existir outros arquivos nesse diretório: um `check` para testar se o serviço está ativo, um `finish` para procedimentos de parada, um arquivo `conf` com variáveis de ambiente e um subdiretório `log` para logs dedicados. Ao habilitar um serviço (por exemplo, criando um link simbólico em `/var/service/`), o runit automaticamente cria uma pasta `supervise` na primeira execução, começando a monitorar o processo. Com esse esquema, cada reinicialização de serviço ocorre em um ambiente consistente e isolado, e o runit mantém um _pipeline_ de logs ativo enquanto o serviço estiver em execução. @void-docs
+Na prática, ao entrar no _Stage 2_ o runit executa o programa `runsvdir`, que escaneia diretórios de serviços e os inicia simultaneamente, resultando em um boot rápido e determinístico. Esse design segmentado contribui para a confiabilidade e agilidade do Void: o código executado como processo 1 (`PID 1`) é *muito pequeno*, o que facilita auditoria e reduz pontos únicos de falha. Os _“runlevels”_ são gerenciados pelas ferramentas internas do runit (`runsvdir` e `runsvchdir`), e o sistema resolve automaticamente dependências simples entre serviços durante a inicialização. @runit
+
+Cada serviço no Void sob runit *é representado por um diretório dedicado* dentro de `/etc/sv/` (ou `/var/service/`). Esse diretório deve conter obrigatoriamente um script executável chamado `run`, que inicia o serviço em primeiro plano. Opcionalmente, podem existir outros arquivos nesse diretório: um `check` para testar se o serviço está ativo, um `finish` para procedimentos de parada, um arquivo `conf` com variáveis de ambiente e um subdiretório `log` para logs dedicados.
+
+Ao habilitar um serviço (por exemplo, criando um link simbólico em `/var/service/`), o runit automaticamente cria uma pasta `supervise` na primeira execução, começando a monitorar o processo. Com esse esquema, cada reinicialização de serviço ocorre em um ambiente consistente e isolado, e o runit mantém um _pipeline_ de logs ativo enquanto o serviço estiver em execução. @void-docs
 
 Caso seja necessário desligar ou reinicializar o sistema, o runit interrompe todos os serviços supervisionados e executa o _Stage 3_ (`/etc/runit/3`), que finaliza tarefas do sistema e realiza o _halt_ ou _reboot_. @runit
 
 == Comparação entre glibc e musl
 
-As bibliotecas C são componentes centrais de qualquer sistema Linux. A *GNU C Library* é a implementação mais difundida, usada por padrão na maioria das distribuições populares (*Debian*, *Ubuntu*, *Fedora* etc.). @chainguard-glibc-musl Criada em 1988 sob a licença LGPL#sym.copyleft, a glibc fornece extensões específicas do GNU e optimizações que melhoram o desempenho em tempo de execução. @chainguard-glibc-musl Em contrapartida, o musl é uma alternativa lançada em 2011 com *licença MIT* (mais permissiva), concebida para ser simples, eficiente em recursos e estritamente compatível com padrões POSIX. @chainguard-glibc-musl @void-docs
+As bibliotecas C são componentes centrais de qualquer sistema Linux. A *GNU C Library* é a implementação mais difundida, usada por padrão na maioria das distribuições populares (*Debian*, *Ubuntu*, *Fedora* etc.). @chainguard-glibc-musl
+
+Criada em 1988 sob a licença LGPL#sym.copyleft, a glibc fornece extensões específicas do GNU e optimizações que melhoram o desempenho em tempo de execução. @chainguard-glibc-musl Em contrapartida, o musl é uma alternativa lançada em 2011 com *licença MIT* (mais permissiva), concebida para ser simples, eficiente em recursos e estritamente compatível com padrões POSIX. @chainguard-glibc-musl @void-docs
 
 Em vez de incorporar várias extensões de plataforma, o musl mantém uma base de código enxuta e estruturada para oferecer correção e segurança, tornando o sistema geralmente mais fácil de auditar e resulta em binários menores. @chainguard-glibc-musl
 
@@ -55,6 +65,7 @@ O Void Linux destaca-se por oferecer *suporte oficial a ambas as bibliotecas C*:
 Uma instalação baseada em musl tende a resultar em um sistema final de _footprint_ menor (devido aos binários compactos) e inicialização potencialmente mais rápida, mantendo funcionalidades equivalentes às de uma instalação glibc. @chainguard-glibc-musl @void-docs No entanto, vale lembrar que o *musl segue estritamente os padrões POSIX e não inclui extensões próprias do GNU*, por isso, certos softwares podem exigir ajustes para compilar ou funcionar corretamente em musl. @void-docs
 
 Adicionalmente, alguns programas proprietários não suportam musl (como os drivers oficiais da NVIDIA) @void-docs, o que pode influenciar a escolha da libc em sistemas que dependem desse tipo de software.
+
 
 == O sistema de pacotes XBPS
 
@@ -103,9 +114,8 @@ Além desses comandos, o usuário pode personalizar repositórios oficiais edita
 
 O código-fonte do XBPS está disponível no #link("https://github.com/void-linux/xbps")[repositório oficial do GitHub], onde pode-se acompanhar seu desenvolvimento e contribuições da comunidade.
 
-#pagebreak()
 
-== Rolling release?
+== O modelo rolling release
 
 O Void Linux adota o modelo _rolling release_#footnote("Termo em inglês que indica que o sistema recebe atualizações constantes sem lançamentos de versão numérica periódica.") (ou lançamento contínuo). Isso significa que não existem versões pontuais pré-definidas do sistema#footnote[Como, por exemplo, a distro Ubuntu que é lançada em versões pontuais como Ubuntu 24.04.2 LTS (Noble Numbat), Ubuntu 22.04.5 LTS (Jammy Jellyfish), Ubuntu 20.04.6 LTS (Focal Fossa), etc.]; em vez disso, o usuário mantém o Void sempre atualizado com as últimas versões dos pacotes disponibilizados nos repositórios. @void
 
@@ -121,7 +131,7 @@ O modelo rolling release do Void garante um fluxo contínuo de atualizações de
 
 O xbps-src é o sistema de compilação (_build system_) de pacotes-fonte do Void Linux. Integrado ao repositório void-packages (#link("void-linux/void-packages", "https://github.com/void-linux/void-packages")), ele permite *construir pacotes diretamente das fontes* usando templates específicos.
 
-Provavelmente inspirado em sistemas como o #link("https://docs.freebsd.org/en/books/handbook/ports/#ports-using")[ports de BSD], o xbps-src foi escrito do zero e é uma das principais forças do Void. De acordo com o _Handbook_,
+Provavelmente inspirado em sistemas como o #link("https://docs.freebsd.org/en/books/handbook/ports/#ports-using")[ports de BSD], o xbps-src foi desenvolvido do início e é uma das principais forças do Void. De acordo com o _Handbook_,
 #quote(
   attribution: <void-docs>,
 )[você pode usar o xbps-src no repositório void-packages para construir pacotes (incluindo os restritos) a partir de templates.]
@@ -136,9 +146,9 @@ Além disso, o xbps-src suporta compilação cruzada: é possível compilar paco
 
 == Gerenciamento de memória e dispositivos
 
-O Void Linux foi projetado para ter pegada ("_footprint_") reduzida. Em uso comum (ex.: ambiente #link("https://www.xfce.org/")[XFCE]) consome cerca de $150–200$ MB de RAM em repouso. @digital-ocean-void Mesmo instalações mínimas requerem quantidades modestas de RAM (a tabela oficial recomenda $~96$ MB para base em `x86_64/glibc` ou `x86_64/musl`). @void-docs-installation-guide
+O Void Linux foi projetado para ter pegada ("_footprint_")#footnote()[Refere-se ao uso mínimo de recursos do sistema, como memória RAM, espaço em disco e tempo de inicialização.] reduzida. Em uso comum (ex.: ambiente #link("https://www.xfce.org/")[XFCE]) consome cerca de $150–200$ MB de RAM em repouso. #footnote()[Estado em que o sistema está ocioso, sem carga de trabalho ou aplicações ativas em execução.] @digital-ocean-void Mesmo instalações mínimas requerem quantidades modestas de RAM (a tabela oficial recomenda $~96$ MB para base em `x86_64/glibc` ou `x86_64/musl`). @void-docs-installation-guide
 
-Como préviamente mencionado, o sistema oferece duas variantes de _C library_: `glibc` (compatível, mas maior) e `musl` (mais enxuto). Imagens base com musl ocupam cerca de $600$ MB em disco, aproximadamente $100$ MB _a menos_ que a versão glibc ($700$ MB) – e produzem binários menores e mais simples. @void-docs-installation Esse design minimalista e o _init_ runit ajudam o Void a manter baixo consumo de memória geral.
+Como previamente mencionado, o sistema oferece duas variantes de _C library_: `glibc` (compatível, mas maior) e `musl` (mais enxuto). Imagens base com musl ocupam cerca de $600$ MB em disco, aproximadamente $100$ MB _a menos_ que a versão glibc ($700$ MB) – e produzem binários menores e mais simples. @void-docs-installation Esse design minimalista e o _init_ runit ajudam o Void a manter baixo consumo de memória geral.
 
 O gerenciamento de memória em si segue o modelo padrão do Linux: paginação e mapeamento de arquivos (`mmap`) funcionam normalmente. O Void não cria swap automaticamente; cabe ao usuário ativá-lo, se necessário ou desejado, usando `mkswap` e `swapon`, ou optar por soluções de compressão em RAM (ex.: `zram` via serviços específicos).
 
@@ -177,3 +187,4 @@ Não há uma _layer_ especial de abstração em Void: o reconhecimento de hardwa
 
 // #pagebreak()
 // @void @void-docs @prolinuxde @void-distrowatch @salute @distrowatch-weekly
+
